@@ -19,16 +19,41 @@ public class BouncingBall extends JPanel implements ActionListener {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.setColor(Color.BLUE);
-        g.fillOval(ballX, ballY, ballDiameter, ballDiameter); // Dibujar la 
+       
+     g.fillOval(ballX, ballY, ballDiameter, ballDiameter);
+    	  
+    	  
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (ballX + ballDeltaX < 0 || ballX + ballDiameter + ballDeltaX > getWidth()) {
             ballDeltaX *= -1; // Invertir la dirección horizontal si choca con el borde izquierdo o derecho
-        }
+        
+          
+        	  ballDiameter=ballDiameter-1;
+        	
+        	  if( ballDiameter==0) 
+              {
+            	  ballDiameter=ballDiameter+30;
+            			  
+              }  
+        	  
+                  
+          }
         if (ballY + ballDeltaY < 0 || ballY + ballDiameter + ballDeltaY > getHeight()) {
             ballDeltaY *= -1; // Invertir la dirección vertical si choca con el borde superior o inferior
+           
+          	  ballDiameter=ballDiameter-1;
+          		
+          	if( ballDiameter==0) 
+            {
+          	  ballDiameter=ballDiameter+30;
+          			  
+            } 
+          	  
+            
+             
         }
 
         ballX += ballDeltaX; // Actualizar la posición horizontal de la pelota
